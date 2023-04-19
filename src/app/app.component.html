@@ -1,5 +1,16 @@
 <h1>Todo App</h1>
-<input type="text" placeholder="Todo something" formControlName="descriptionValue" >
-<button [disabled]="!description.valid" (click)="saveTodo()">+</button>
-<p>{{description.value}}</p>
-<p *ngFor="let todo of todos">{{todo.description}}</p>
+<form [formGroup]="todoForm">
+    <input type="text" placeholder="Todo something" formControlName="description" [value]="description?.value">
+    <button [disabled]="!todoForm.valid" (click)="saveTodo()">+</button>
+    <button [disabled]="!todoForm.valid" (click)="filter('com')">completed</button>
+    <button [disabled]="!todoForm.valid" (click)="filter('rem')">Remaining</button>
+    <button [disabled]="!todoForm.valid" (click)="filter('todos')">reset</button>
+</form>
+<H2>My Todos</H2>
+<div *ngFor="let todo of todos;index as i">
+    <div>
+        <input type="radio" [checked]="todo.done" (click)="done(i)"/>
+            ID# {{todo.id}} Description: {{todo.description}} {{todo.done?"Done":"Todo"}}
+        <button (click)="deleteTodo(todo,i)">-</button>
+    </div>
+</div>
