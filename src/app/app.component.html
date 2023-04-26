@@ -1,16 +1,19 @@
-<h1>Todo App</h1>
-<form [formGroup]="todoForm">
-    <input type="text" placeholder="Todo something" formControlName="description" [value]="description?.value">
-    <button [disabled]="!todoForm.valid" (click)="saveTodo()">+</button>
-    <button [disabled]="!todoForm.valid" (click)="filter('com')">completed</button>
-    <button [disabled]="!todoForm.valid" (click)="filter('rem')">Remaining</button>
-    <button [disabled]="!todoForm.valid" (click)="filter('todos')">reset</button>
-</form>
-<H2>My Todos</H2>
-<div *ngFor="let todo of todos;index as i">
-    <div>
-        <input type="radio" [checked]="todo.done" (click)="done(i)"/>
-            ID# {{todo.id}} Description: {{todo.description}} {{todo.done?"Done":"Todo"}}
-        <button (click)="deleteTodo(todo,i)">-</button>
+<section class="main_app_wrapper" >
+    <h1 class="main_heading_wrapper" >Todo List App</h1>
+    <form [formGroup]="todoForm" >
+        <input class="custom_field"  type="text" placeholder="Todo something" formControlName="description" [value]="description?.value"> &nbsp; 
+        <button class="button_1" [disabled]="!todoForm.valid" (click)="saveTodo()">Add</button> &nbsp;
+        <button class="button_2" [disabled]="!todoForm.valid" (click)="filter('com')">Completed</button> &nbsp;
+        <button class="button_3" [disabled]="!todoForm.valid" (click)="filter('rem')">Remaining</button> &nbsp;
+        <button class="button_4" [disabled]="!todoForm.valid" (click)="filter('todos')">Reset</button> &nbsp;
+    </form>
+    <H2 class="my_todos_wrapper">My Todos</H2>
+    <div *ngFor="let todo of todos;index as i">
+        <div class="todo_list_wrapper" >
+            <input type="radio" [checked]="todo.done" (click)="done(i)"/>
+                <!-- ID# {{todo.id}} Description:  -->
+                {{todo.description}} {{todo.done?"Done":""}}  &nbsp; 
+            <button class="button_5" (click)="deleteTodo(todo,i)">Remove</button> 
+        </div>
     </div>
-</div>
+    </section>

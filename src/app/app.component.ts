@@ -20,7 +20,7 @@ export class AppComponent {
   }
   formInit(){
     this.todoForm = this.fb.group({
-      description:['my 1st todo',Validators.required]
+      description:['',Validators.required]
     })
   }
   get description(){
